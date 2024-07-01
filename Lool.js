@@ -36,7 +36,9 @@ await page.waitForSelector('.mt-20')
 const divCount = await page.$eval('.mt-20', el => el.innerText);
 const cleaner = divCount.split("Question:");
 const cleaner2 = cleaner[1].split("Answer");
-res.send(cleaner2[0]);
+const obj = { username: req.query.a, secq: cleaner2[0] };
+const myJSON = JSON.stringify(obj);
+res.send(myJSON);
 
 } catch(e){
 	res.send('error'+ e);
